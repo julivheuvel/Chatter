@@ -9,17 +9,17 @@
 </head>
 <body>
     
-    <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
+    <h1 class="m-5 t-center">Welcome {{user.first_name}} {{user.last_name}}</h1>
 
     
-    <div class="d-flex jc-between w-70 m-auto mb-3">
+    <div class="d-flex jc-between vw-50 m-auto">
         <a href="/chatter/allmessages">View All Existing Messages</a>
         
         <a href="/logout">Logout</a>
     </div>
     
     
-    <form action="/chatter/create-message" method="post" class="bg-lightblue br-5 bs-01-black m-auto w-60 p-2">
+    <form action="/chatter/create-message" method="post" class="m-auto vw-50 br-5 bg-lavender-darken-1 bs-10-lightgray p-5">
         <input type="hidden" value="{{user.id}}" name="user_id">
         <div class="mb-3 p-2">
             <label class="form-label">subject</label>
@@ -29,7 +29,7 @@
             <label class="form-label">content</label>
             <input name="content" type="text" class="b-1 br-3">
         </div>
-        <input type="submit" value="Send Message" class="p-2 br-3">
+        <input type="submit" value="Send Message" class="mt-2 btn-outline-purple">
         {% with messages = get_flashed_messages() %}     
             {% if messages %}                           
                 {% for message in messages %}            

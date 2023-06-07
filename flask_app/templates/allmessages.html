@@ -8,14 +8,26 @@
     <title>Chatter</title>
 </head>
 <body>
-    <a href="/chatter/dashboard">dashboard</a>
-    <h1>all messages</h1>
+    <div class="m-auto m-5 d-flex vw-50 ai-center jc-between">
+        <h1>all messages</h1>
+        <a href="/chatter/dashboard">dashboard</a>
+    </div>
 
-    {% for message in messages%}
+    <div class="m-auto vw-50 br-5 bg-lavender-darken-1 bs-10-lightgray p-5">
+        {% for message in messages%}
+        
+            <div class="bs-10-lavender p-3">
+                <h5 class="text-purple">{{message.subject}}</h5>
+                <p class="text-purple-lighten-1">{{message.content}}</p>
+                <p class="text-purple-lighten-1">{{message.user_id}}</p>
+                {% if session["user_id"] == message.user_id %}
+                    <a href="#" class="link-indianred">edit</a>
+                    <a href="#" class="link-indianred">delete</a>
+                {% endif %}
+            </div>
 
-        <p>{{message.subject}}</p>
-        <p>{{message.content}}</p>
+        {% endfor %}
+    </div>
 
-    {% endfor %}
 </body>
 </html>
