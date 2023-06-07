@@ -7,51 +7,48 @@
     <link rel="stylesheet" href="./../static/styles/css/style.css">
     <title>Register</title>
 </head>
-<body>
+<body class="vw-100 vh-100 d-flex jc-center ai-center">
     
-    <h1>Register</h1>
-
-
-    <a href="/login">Login</a>
-
-
-    {% with messages = get_flashed_messages() %}     
-        {% if messages %}                           
-            {% for message in messages %}            
-                <ul class="text-danger" style="text-align: center;">{{message}}</ul>        
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-
-    <form action="/post-user" method="post">
-        <div>
-            <label>First Name</label>
-            <input type="text" name="first_name" placeholder="First Name" required>
+    <div class="vw-50 bg-lavender-darken-1 bs-10-lightgray br-5 p-5">
+        <div class="d-flex jc-between ai-center pb-2">
+            <h1 class="text-purple">Register</h1>
+            <a href="/login" class="link-purple-darken-3">Login</a>
         </div>
-        <div>
-            <label>Last Name</label>
-            <input type="text" name="last_name" placeholder="Last Name" required>
-        </div>
-        <div>
-            <label>Age</label>
-            <input type="number" name="age" placeholder="0" required>
-        </div>
-        <div>
-            <label>Email</label>
-            <input type="text" name="email" placeholder="name@mail.com" required>
-        </div>
-        <div>
-            <label>Password</label>
-            <input type="password" name="password" required>
-        </div>
-        <div>
-            <label>Confirm Password</label>
-            <input type="password" name="confirm_password" required>
-        </div>
-
-        <button>Submit</button>
-
-    </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <ul class="text-danger" style="text-align: center;">{{message}}</ul>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action="/post-user" method="post" class="">
+            <div class="d-flex jc-between ai-center p-1">
+                <label class="text-gray-darken-4">First Name</label>
+                <input class="b-1-lightgray bg-whitesmoke p-1 br-3" type="text" name="first_name" placeholder="First Name" required>
+            </div>
+            <div class="d-flex jc-between ai-center p-1">
+                <label class="text-gray-darken-4">Last Name</label>
+                <input class="b-1-lightgray bg-whitesmoke p-1 br-3" type="text" name="last_name" placeholder="Last Name" required>
+            </div>
+            <div class="d-flex jc-between ai-center p-1">
+                <label class="text-gray-darken-4">Age</label>
+                <input class="b-1-lightgray bg-whitesmoke p-1 br-3" type="number" name="age" placeholder="0" required>
+            </div>
+            <div class="d-flex jc-between ai-center p-1">
+                <label class="text-gray-darken-4">Email</label>
+                <input class="b-1-lightgray bg-whitesmoke p-1 br-3" type="text" name="email" placeholder="name@mail.com" required>
+            </div>
+            <div class="d-flex jc-between ai-center p-1">
+                <label class="text-gray-darken-4">Password</label>
+                <input class="b-1-lightgray bg-whitesmoke p-1 br-3" type="password" name="password" placeholder="********" required>
+            </div>
+            <div class="d-flex jc-between ai-center p-1">
+                <label class="text-gray-darken-4">Confirm Password</label>
+                <input class="b-1-lightgray bg-whitesmoke p-1 br-3" type="password" name="confirm_password" placeholder="********" required>
+            </div>
+            <button class="mt-2 btn-outline-purple">Submit</button>
+        </form>
+    </div>
     
 </body>
 </html>
