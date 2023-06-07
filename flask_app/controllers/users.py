@@ -78,7 +78,7 @@ def postUser():
     session["user_id"] = new_user
     print(session["user_id"])
 
-    return redirect("/dashboard")
+    return redirect("/chatter/dashboard")
 
 
 
@@ -116,13 +116,13 @@ def loginUser():
     session["user_id"] = user_in_db.id
 
 
-    return redirect("/dashboard")
+    return redirect("/chatter/dashboard")
 
 
 # ==================
 # DASHBOARD ROUTE
 # ==================
-@app.route("/dashboard")
+@app.route("/chatter/dashboard")
 def dashboard():
 
     if "user_id" not in session:

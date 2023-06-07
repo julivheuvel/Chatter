@@ -11,15 +11,34 @@
     
     <h1>Welcome {{user.first_name}} {{user.last_name}}</h1>
 
-    {% with messages = get_flashed_messages() %}     
-        {% if messages %}                           
-            {% for message in messages %}            
-                <ul class="text-danger" style="text-align: center;">{{message}}</ul>        
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
     
+    <div class="d-flex jc-between w-70 m-auto mb-3">
+        <a href="/chatter/allmessages">View All Existing Messages</a>
+        
+        <a href="/logout">Logout</a>
+    </div>
+    
+    
+    <form action="/chatter/create-message" method="post" class="bg-lightblue br-5 bs-01-black m-auto w-60 p-2">
+        <input type="hidden" value="{{user.id}}" name="user_id">
+        <div class="mb-3 p-2">
+            <label class="form-label">subject</label>
+            <input name="subject" type="text" class="b-1 br-3">
+        </div>
+        <div class="mb-3 p-2">
+            <label class="form-label">content</label>
+            <input name="content" type="text" class="b-1 br-3">
+        </div>
+        <input type="submit" value="Send Message" class="p-2 br-3">
+        {% with messages = get_flashed_messages() %}     
+            {% if messages %}                           
+                {% for message in messages %}            
+                    <ul class="text-red" style="text-align: center;">{{message}}</ul>        
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </form>
 
-    <a href="/logout">Logout</a>
+
 </body>
 </html>
