@@ -9,6 +9,7 @@ from flask import render_template, request, redirect, session
 # MODEL IMPORTS
 # ==================
 from flask_app.models.user import User
+from flask_app.models.message import Message
 
 # ==================
 # BCRYPT IMPORTS
@@ -134,7 +135,9 @@ def dashboard():
     }
     user = User.get_one(data)
 
-    return render_template("dashboard.html", user = user)
+    messages = Message.get_all_mesages()
+
+    return render_template("dashboard.html", user = user, messages = messages)
 
 
 # ==================

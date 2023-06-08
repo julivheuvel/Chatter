@@ -9,11 +9,11 @@
 </head>
 <body>
     
-    <h1 class="m-5 t-center">Welcome {{user.first_name}} {{user.last_name}}</h1>
-
     
-    <div class="d-flex jc-between vw-50 m-auto">
-        <a href="/chatter/allmessages">View All Existing Messages</a>
+    
+    <div class="d-flex jc-between ai-center vw-50 m-3-auto">
+        <h1 class="">Welcome {{user.first_name}} {{user.last_name}}</h1>
+        
         
         <a href="/logout">Logout</a>
     </div>
@@ -39,6 +39,22 @@
         {% endwith %}
     </form>
 
+
+    <div class="m-auto vw-50 br-5 bg-lavender-darken-1 bs-10-lightgray p-5">
+        {% for message in messages%}
+        
+            <div class="bs-10-lavender p-3">
+                <h5 class="text-purple">{{message.subject}}</h5>
+                <p class="text-purple-lighten-1">{{message.content}}</p>
+                <p class="text-purple-lighten-1">{{message.user_id}}</p>
+                {% if session["user_id"] == message.user_id %}
+                    <a href="#" class="link-indianred">edit</a>
+                    <a href="#" class="link-indianred">delete</a>
+                {% endif %}
+            </div>
+
+        {% endfor %}
+    </div>
 
 </body>
 </html>

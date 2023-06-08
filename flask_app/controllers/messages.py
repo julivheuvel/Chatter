@@ -23,23 +23,6 @@ from flask import flash
 
 
 
-
-# ==================
-# SHOW ALL MESSAGES ROUTE
-# ==================
-@app.route("/chatter/allmessages")
-def all_messages():
-    if "user_id" not in session:
-        flash("Please register/login before you proceed to the website")
-        return redirect("/")
-    
-    user_id = session["user_id"]
-
-    messages = Message.get_all_mesages()
-
-    return render_template("allmessages.html", loggedin_userId = user_id, messages=messages)
-
-
 # ==================
 # CREATE MESSAGE ROUTE
 # ==================
