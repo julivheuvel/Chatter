@@ -9,10 +9,10 @@
 </head>
 <body class="vw-100 vh-100 d-flex jc-center ai-center">
     
-    <div class="vw-50 bg-lavender-darken-1 bs-10-lightgray br-5 p-5">
+    <div class="vw-50 bg-palette1 bs-10-lightgray br-5 p-5">
         <div class="d-flex jc-between ai-center pb-2">
-            <h1 class="text-purple">Register</h1>
-            <a href="/login" class="link-purple-darken-3">Login</a>
+            <h1 class="text-palette4">Register</h1>
+            <a href="/login" class="link-palette2">Login</a>
         </div>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -46,7 +46,7 @@
                 <label class="text-gray-darken-4">Confirm Password</label>
                 <input class="b-1-lightgray bg-whitesmoke p-1 br-3" type="password" name="confirm_password" placeholder="********" required>
             </div>
-            <button class="mt-2 btn-outline-purple">Submit</button>
+            <button class="mt-2 btn-outline-palette2">Submit</button>
         </form>
     </div>
     

@@ -11,15 +11,15 @@
     
     
     
-    <div class="d-flex jc-between ai-center vw-50 m-3-auto">
-        <h1 class="">Welcome {{user.first_name}} {{user.last_name}}</h1>
+    <div class="d-flex jc-between ai-center vw-50 m-auto mb-0">
+        <div class="text-palette1 mb-0">Welcome {{user.first_name}} {{user.last_name}}</div>
         
         
-        <a href="/logout">Logout</a>
+        <a href="/logout" class="text-palette1">Logout</a>
     </div>
     
     
-    <form action="/chatter/create-message" method="post" class="m-auto vw-50 br-5 bg-lavender-darken-1 bs-10-lightgray p-5">
+    <form action="/chatter/create-message" method="post" class="m-auto vw-50 br-5 bg-palette1 p-5">
         <input type="hidden" value="{{user.id}}" name="user_id">
         <div class="mb-3 p-2">
             <label class="form-label">subject</label>
@@ -40,7 +40,7 @@
     </form>
 
 
-    <div class="m-auto vw-50 br-5 bg-lavender-darken-1 bs-10-lightgray p-5">
+    <div class="m-auto vw-50 br-5 bg-palette1  p-5">
         {% for message in messages%}
         
             <div class="bs-10-lavender p-3">
