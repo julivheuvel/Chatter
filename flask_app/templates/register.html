@@ -5,22 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../static/styles/css/style.css">
+    <link rel="stylesheet" href="./../static/styles/css/bsbr.css">
     <title>Chatter: Register</title>
 </head>
 <body class="vw-100 vh-100 d-flex jc-center ai-center">
     
     <div class="vw-50 bg-palette1 bs-10-gray br-cust p-5">
+        
         <div class="d-flex jc-between ai-center pb-2">
             <h1 class="text-whitesmoke">Register</h1>
             <a href="/login" class="link-whitesmoke">Login</a>
         </div>
+
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
-                    <ul class="text-danger" style="text-align: center;">{{message}}</ul>
+                    <ul class="text-red" style="text-align: center;">{{message}}</ul>
                 {% endfor %}
             {% endif %}
         {% endwith %}
+
         <form action="/post-user" method="post" class="">
             <div class="d-flex jc-between ai-center p-1">
                 <label class="text-gray-darken-4">First Name</label>

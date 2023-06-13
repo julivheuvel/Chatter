@@ -44,3 +44,4 @@ def new_message():
     Message.save(data)
 
     return redirect("/chatter/dashboard")
+

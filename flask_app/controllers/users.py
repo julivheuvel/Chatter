@@ -123,7 +123,7 @@ def loginUser():
 # ==================
 # DASHBOARD ROUTE
 # ==================
-@app.route("/chatter/dashboard")
+@app.route("/chatter/dashboard", methods=["get", "post"])
 def dashboard():
 
     if "user_id" not in session:
@@ -134,8 +134,9 @@ def dashboard():
         "id" : session["user_id"]
     }
     user = User.get_one(data)
-
+    
     messages = Message.get_all_mesages()
+
 
     return render_template("dashboard.html", user = user, messages = messages)
 

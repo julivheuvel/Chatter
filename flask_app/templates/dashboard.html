@@ -5,58 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../static/styles/css/style.css">
+    <link rel="stylesheet" href="./../static/styles/css/bsbr.css">
     <title>Chatter: Dashboard</title>
 </head>
 <body>
     
     
     
-    <div class="d-flex jc-between ai-center vw-50 m-auto mb-0">
-        <div class="text-palette1 mb-0">Welcome {{user.first_name}} {{user.last_name}}</div>
-        
-        
-        <a href="/logout" class="text-palette1">Logout</a>
+    <div class="d-flex jc-between ai-center vw-50 m-auto vh-15">
+        <h1 class="text-palette1 fs-8">{{user.first_name}} {{user.last_name}}</h1>
+        <a href="/logout" class="text-palette3">Logout</a>
     </div>
     
-    
-    <form action="/chatter/create-message" method="post" class="m-auto vw-50 br-5 bg-palette1 p-5">
-        <input type="hidden" value="{{user.id}}" name="user_id">
-        <div class="mb-3 p-2">
-            <label class="form-label">subject</label>
-            <input name="subject" type="text" class="b-1 br-3">
-        </div>
-        <div class="mb-3 p-2">
-            <label class="form-label">content</label>
-            <input name="content" type="text" class="b-1 br-3">
-        </div>
-        <input type="submit" value="Send Message" class="mt-2 btn-outline-palette3">
-        {% with messages = get_flashed_messages() %}     
-            {% if messages %}                           
-                {% for message in messages %}            
-                    <ul class="text-red" style="text-align: center;">{{message}}</ul>        
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </form>
 
-
-    <div class="m-auto vw-20 br-5 p-5">
-        {% for message in messages%}
+    <div class="vw-80 m-auto jc-evenly d-flex">
+        <div>
+            <div>add friends</div>
+            <div>all users not friends</div>
+            <div>send friend request</div>
+        </div>
         
-            <div class="br-cust bg-palette1 vh-10 vw-15 p-5 m-5">
-                <h5 class="text-purple mt-2 ml-7">{{message.subject}}</h5>
-                <p class="text-purple-lighten-1 ml-7">{{message.content}}</p>
-                <p class="text-purple-lighten-1 ml-7">{{message.user_id}}</p>
-                {% if session["user_id"] == message.user_id %}
-                    <div class="ml-7">
-                        <a href="#" class="link-indianred">edit</a>
-                        <a href="#" class="link-indianred">delete</a>
+        <div>
+            <form action="/chatter/create-message" method="post" class="bs-15-gray br-15 m-auto vw-25  bg-palette1 p-3  d-flex jc-between ai-center">
+                <div class="w-100">
+                    <input type="hidden" value="{{user.id}}" name="user_id">
+                    <div class="mb-3 p-2">
+                        <label class="form-label">subject</label>
+                        <input name="subject" type="text" class="b-1 br-5">
                     </div>
-                {% endif %}
-            </div>
+                    <div class="mb-3 p-2">
+                        <label class="form-label">content</label>
+                        <textarea name="content" type="text" class="b-1 br-5-lightgray"></textarea>
+                    </div>
+                </div>
+                <input type="submit" value="Send Message" class=" btn-outline-palette3 vh-7">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <ul class="text-red" style="text-align: center;">{{message}}</ul>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </form>
+                
+                
+                <div class="m-5-auto vw-25 p-2 br-cust bg-palette2-lighten-8 bs-20-lightgray">
+                    <div class="t-center m-3">public posts</div>
+                    {% for message in messages%}
+                    
+                    <div class="bg-palette4 vh-15 vw-15 p-3 m-5-auto bs-20-lightgray">
+                        <h5 class="text-purple mt-2 ml-7">{{message.subject}}</h5>
+                        <p class="text-purple-lighten-1 ml-7">{{message.content}}</p>
+                        <p class="text-purple-lighten-1 ml-7">{{message.user_id}}</p>
+                        {% if session["user_id"] == message.user_id %}
+                        <div class="ml-7">
+                            <a href="#" class="link-indianred">edit</a>
+                            <a href="#" class="link-indianred">delete</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+        </div>
+        <div>
+            <div>my friends</div>
+            <div>all friends connections for logged in user</div>
+            <div>link on name to see message history</div>
+            <div>popup form to send a message</div>
+        </div>
 
-        {% endfor %}
+
+
     </div>
-
+    
 </body>
 </html>
