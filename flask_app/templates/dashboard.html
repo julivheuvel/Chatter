@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../static/styles/css/style.css">
     <link rel="stylesheet" href="./../static/styles/css/bsbr.css">
+    <script src="./../static/js/modal.js" defer></script>
     <title>Chatter: Dashboard</title>
 </head>
 <body>
@@ -13,7 +14,7 @@
     
     
     <div class="d-flex jc-between ai-center vw-50 m-auto vh-15">
-        <h1 class="text-palette1 fs-10 o-50">{{user.first_name}} {{user.last_name}}</h1>
+        <h1 class="text-palette1 fs-5 o-15">{{user.first_name}} {{user.last_name}}</h1>
         <a href="/logout" class="text-palette3">Logout</a>
     </div>
     
@@ -26,16 +27,16 @@
         </div>
         
         <div>
-            <form action="/chatter/create-message" method="post" class="bs-15-gray br-15 m-auto vw-25  bg-palette1 p-3">
+            <form action="/chatter/create-message" method="post" class="bs-15-gray br-15 m-5-auto vw-25  bg-palette1 p-3">
                 
                 <input type="hidden" value="{{user.id}}" name="user_id">
                 <div class="mb-3 p-2">
                     <label class="text-gray-darken-4">subject</label>
-                    <input name="subject" type="text" class="b-1 br-5 w-60">
+                    <input name="subject" type="text" class="b-1 br-5 w-60 bg-palette4">
                 </div>
                 <div class="mb-3 p-2">
                     <label class="text-gray-darken-4">content</label>
-                    <textarea name="content" type="text" class="b-1 br-5-lightgray w-60"></textarea>
+                    <textarea name="content" type="text" class="b-1 br-5-lightgray w-60 bg-palette4"></textarea>
                 </div>
                 <input type="submit" value="Send Message" class=" btn-outline-palette3 m-1-auto">
             
@@ -59,10 +60,27 @@
                         <p class="text-purple-lighten-1">{{message.user_id}}</p>
                         {% if session["user_id"] == message.user_id %}
                         <div class="ml-7">
-                            <a href="#" class="link-indianred">edit</a>
+                            <button id="myBtn" class="btn-indianred">edit</button>
                             <a href="#" class="link-indianred">delete</a>
                         </div>
                         {% endif %}
+                    </div>
+
+                    <div id="myModal" class="modal">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <form action="/chatter/editMessage">
+                                <div class="mb-3 p-2">
+                                    <label class="text-gray-darken-4">subject</label>
+                                    <input name="subject" type="text" class="b-1 br-5 w-60 bg-palette4">
+                                </div>
+                                <div class="mb-3 p-2">
+                                    <label class="text-gray-darken-4">content</label>
+                                    <textarea name="content" type="text" class="b-1 br-5-lightgray w-60 bg-palette4"></textarea>
+                                </div>
+                            </form>
+                        </div>                    
                     </div>
                     {% endfor %}
                 </div>
